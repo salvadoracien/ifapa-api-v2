@@ -1,12 +1,14 @@
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { SensorDto } from './sensor.dto'; 
 import { Sensor } from './sensor.entity'; 
+import { InjectRepository } from '@nestjs/typeorm'; 
 import { Repository } from 'typeorm'; 
 
 @Injectable()
 export class SensoresService {
+
   constructor(
-    private sensoresRepository: Repository<Sensor>, 
+      @InjectRepository(Sensor) private sensoresRepository: Repository<Sensor>, 
   ) {}
 
   async findAll(params): Promise<Sensor[]> {

@@ -7,7 +7,6 @@ import {
   Body,
   Delete,
   Put,
-  UseGuards
 } from '@nestjs/common';
 import { SensoresService } from './sensores.service';
 import { Request } from 'express';

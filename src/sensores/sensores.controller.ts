@@ -7,13 +7,16 @@ import {
   Body,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport'; 
 import { SensoresService } from './sensores.service';
 import { Request } from 'express';
 import { SensorDto } from './sensor.dto';
 import { Sensor } from './sensor.class'; 
 
 @Controller('sensores')
+@UseGuards(AuthGuard('jwt')) 
 export class SensoresController {
     constructor(private sensoresService: SensoresService) {} 
 

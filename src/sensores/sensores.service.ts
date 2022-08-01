@@ -28,7 +28,7 @@ export class SensoresService {
     return await this.sensoresRepository.delete({ id: parseInt(sensorId) });
   }
 
-  async updateBook(sensorId: string, newSensor: SensorDto): Promise<Sensor> { 
+  async updateSensor(sensorId: string, newSensor: SensorDto): Promise<Sensor> { 
     let toUpdate = await this.sensoresRepository.findOne({ where: { id: Number(sensorId) } }); 
     let updated = Object.assign(toUpdate, newSensor); 
     return this.sensoresRepository.save(updated); 

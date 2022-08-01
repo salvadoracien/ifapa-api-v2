@@ -46,6 +46,6 @@ export class SensoresController {
     @Param('sensorId') sensorId: string,
     @Body() newSensor: SensorDto, 
   ): Promise<Sensor> {
-    return this.sensoresService.updateBook(sensorId, newSensor);
+    return this.sensoresService.updateSensor(sensorId, newSensor);
   }
 }

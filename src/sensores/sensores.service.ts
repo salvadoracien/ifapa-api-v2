@@ -1,6 +1,7 @@
-import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
-import { SensorDto } from './sensor.dto'; 
-import { Sensor } from './sensor.entity'; 
+import { Injectable} from '@nestjs/common';
+import { CreateSensorDto } from './dto/create-sensor.dto'; 
+import { UpdateSensorDto } from './dto/update-sensor.dto';
+import { Sensor } from './entities/sensor.entity'; 
 import { InjectRepository } from '@nestjs/typeorm'; 
 import { Repository } from 'typeorm'; 
 
@@ -8,28 +9,28 @@ import { Repository } from 'typeorm';
 export class SensoresService {
 
   constructor(
-      @InjectRepository(Sensor) private sensoresRepository: Repository<Sensor>, 
+      @InjectRepository(Sensor) 
+      private sensoresRepository: Repository<Sensor>, 
   ) {}
 
   async findAll(params): Promise<Sensor[]> {
     return await this.sensoresRepository.find();
   }
 
-  //Aqui hemos tenido que hacer la conversion de sensorID a numero para poder aplicar el where
-  async findSensor(sensorId: string): Promise<Sensor> {
-    return await this.sensoresRepository.findOne({ where: { id: Number(sensorId) } }); 
+ async findOne(id: number): Promise<Sensor> {
+    return await this.sensoresRepository.findOne({ where: { id } }); 
   }
 
-  createSensor(newSensor: SensorDto): Promise<Sensor> {
+  create(newSensor: CreateSensorDto): Promise<Sensor> {
     return this.sensoresRepository.save(newSensor);
   }
 
-  async deleteSensor(sensorId: string): Promise<any> {
-    return await this.sensoresRepository.delete({ id: parseInt(sensorId) });
+  async delete(id: number): Promise<Sensor> {
+    return await this.sensoresRepository.remove({id});
   }
 
-  async updateSensor(sensorId: string, newSensor: SensorDto): Promise<Sensor> { 
-    let toUpdate = await this.sensoresRepository.findOne({ where: { id: Number(sensorId) } }); 
+  async update(id: number, newSensor: UpdateSensorDto): Promise<Sensor> { 
+    let toUpdate = await this.sensoresRepository.findOne({ where: { id } }); 
     let updated = Object.assign(toUpdate, newSensor); 
     return this.sensoresRepository.save(updated); 
   }

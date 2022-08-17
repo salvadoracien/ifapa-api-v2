@@ -35,12 +35,12 @@ export class SensoresController {
 
   @Get(':id') 
   async findOne(@Param('id') id: number): Promise<Sensor> { 
-    return this.sensoresService.findOne(id); 
+    return this.sensoresService.findOne(+id); 
   }
 
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<Sensor> {
-    return this.sensoresService.delete(id);
+    return this.sensoresService.delete(+id);
   }
 
   @Patch(':id')
@@ -48,6 +48,6 @@ export class SensoresController {
     @Param('id') id: number,
     @Body() newSensor: UpdateSensorDto, 
   ): Promise<Sensor> {
-    return this.sensoresService.update(id, newSensor);
+    return this.sensoresService.update(+id, newSensor);
   }
 }

@@ -8,7 +8,8 @@ import { Reactor } from './entities/reactor.entity';
 @Injectable()
 export class ReactoresService {
   constructor(
-    @InjectRepository (Reactor) private reactoresRepository: Repository<Reactor>,
+    @InjectRepository (Reactor) 
+    private reactoresRepository: Repository<Reactor>,
     ) {}
 
   async create(createReactorDto: CreateReactorDto): Promise<Reactor>{
@@ -16,11 +17,14 @@ export class ReactoresService {
   }
 
   async findAll(): Promise<Reactor[]> {
-    return this.reactoresRepository.find({});
+    return this.reactoresRepository.find({ relations: ['sensores'] });
   }
 
   async findOne(id: number):Promise<Reactor> {
-    return this.reactoresRepository.findOne({ where: {id}});
+    return this.reactoresRepository.findOne({
+      where: {id},
+      relations :['sensores'],
+    });
   }
 
   async update(id: number, updateReactorDto: UpdateReactorDto): Promise<Reactor>{

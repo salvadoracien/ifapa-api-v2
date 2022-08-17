@@ -14,19 +14,22 @@ export class SensoresService {
   ) {}
 
   async findAll(params): Promise<Sensor[]> {
-    return await this.sensoresRepository.find();
+    return await this.sensoresRepository.find({ relations: ['reactor', 'medidas'] });
   }
 
  async findOne(id: number): Promise<Sensor> {
-    return await this.sensoresRepository.findOne({ where: { id } }); 
+    return await this.sensoresRepository.findOne({ 
+      where: { id },
+      relations: ['reactor', 'medidas']
+    }); 
   }
 
   create(newSensor: CreateSensorDto): Promise<Sensor> {
-    return this.sensoresRepository.save(newSensor);
+    return this.sensoresRepository.save(newSensor[""]);
   }
 
   async delete(id: number): Promise<Sensor> {
-    return await this.sensoresRepository.remove({id});
+    return await this.sensoresRepository.remove[id];
   }
 
   async update(id: number, newSensor: UpdateSensorDto): Promise<Sensor> { 

@@ -16,6 +16,34 @@ import { AuthGuard } from '@nestjs/passport';
 
 
 @Controller('medidas')
+@ApiTags('medidas')
+@UseGuards(AuthGuard('jwt'))
+@ApiBearerAuth('access-token')
 export class MedidasController {
   constructor(private readonly medidasService: MedidasService) {}
+
+  @Post()
+  create(@Body() createMedidaDto: CreateMedidaDto) {
+    return this.medidasService.create(createMedidaDto);
+  }
+
+  @Get()
+  findAll() {
+    return this.medidasService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.medidasService.findOne(+id);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateMedidaDto: UpdateMedidaDto) {
+    return this.medidasService.update(+id, updateMedidaDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.medidasService.delete(+id);
+  }
 }

@@ -17,7 +17,7 @@ export class MedidasService {
         return this.medidasRepository.save(createMedidaDto);
       }
     
-      async findAll(params): Promise<Medida[]> {
+      async findAll(): Promise<Medida[]> {
         return this.medidasRepository.find();
       }
     

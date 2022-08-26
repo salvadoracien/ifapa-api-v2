@@ -12,7 +12,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { SensoresService } from './sensores.service';
 import { UpdateSensorDto }  from './dto/update-sensor.dto'
 import { CreateSensorDto } from './dto/create-sensor.dto';
-import { Sensor } from './entities/sensor.entity'; 
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @Controller('sensores')
@@ -34,12 +33,12 @@ export class SensoresController {
   }
 
   @Get(':id') 
-  async findOne(@Param('id') id: number): Promise<Sensor> { 
+  async findOne(@Param('id') id: number) { 
     return this.sensoresService.findOne(+id); 
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: number): Promise<Sensor> {
+  async delete(@Param('id') id: number) {
     return this.sensoresService.delete(+id);
   }
 
@@ -47,7 +46,7 @@ export class SensoresController {
   async update(
     @Param('id') id: number,
     @Body() newSensor: UpdateSensorDto, 
-  ): Promise<Sensor> {
+  ) {
     return this.sensoresService.update(+id, newSensor);
   }
 }

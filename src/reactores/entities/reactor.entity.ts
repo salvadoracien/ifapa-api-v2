@@ -13,11 +13,7 @@ export class Reactor {
     nombre?: string;
     
     @ApiProperty({example : 'Sensor_CO2'})
-    @OneToMany(
-        () => Sensor,
-        (sensor : Sensor) => sensor.reactor,
-    )
-
+    @OneToMany( () => Sensor, (sensor : Sensor) => sensor.reactor )
     sensores: Sensor[];
     //Gestionar aqui como le metemos los sensores que lleva cada reactor
 }

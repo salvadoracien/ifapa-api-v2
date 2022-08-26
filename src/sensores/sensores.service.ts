@@ -25,7 +25,7 @@ export class SensoresService {
   }
 
   create(newSensor: CreateSensorDto): Promise<Sensor> {
-    return this.sensoresRepository.save(newSensor[""]);
+    return this.sensoresRepository.save(newSensor);
   }
 
   async delete(id: number): Promise<Sensor> {

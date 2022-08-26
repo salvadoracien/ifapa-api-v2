@@ -6,9 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // Configurar títulos de documnentación
   const options = new DocumentBuilder() 
-    .setTitle('IFAPA REST API')
-    .setDescription('Proyecto de TFG sobre una API Rest para el IFAPA')
-    .setVersion('0.0.1')
+    .setTitle('IFAPA REST API 2022')
+    .setDescription('Proyecto de TFG sobre una API Rest para el IFAPA. Versión del 24/08')
+    .setVersion('0.1')
     .addBearerAuth( 
       { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' },
       'access-token', 

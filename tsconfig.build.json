@@ -1,4 +1,8 @@
 {
+  "emitDecoratorMetadata" : true,
+  "lib": ["es5", "es6", "dom"],  
+  "moduleResolution": "node",
+  "target": "es5", 
   "extends": "./tsconfig.json",
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

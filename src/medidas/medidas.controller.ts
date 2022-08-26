@@ -19,6 +19,7 @@ import { AuthGuard } from '@nestjs/passport';
 @ApiTags('medidas')
 @UseGuards(AuthGuard('jwt'))
 @ApiBearerAuth('access-token')
+
 export class MedidasController {
   constructor(private readonly medidasService: MedidasService) {}
 

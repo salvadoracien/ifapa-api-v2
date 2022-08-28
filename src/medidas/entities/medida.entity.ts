@@ -1,24 +1,24 @@
-import { Entity, Column, PrimaryColumn, ManyToOne} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity';
 
 @Entity()
 export class Medida {
-    @PrimaryColumn()
-    @ApiProperty({ example: '235959'})
+    @PrimaryGeneratedColumn()
+    @ApiProperty({ example: '001'})
     id: number;
 
-    @ApiProperty({example: 'Electrovávula_C02'})
+    @ApiProperty({example: '01/01/2001'})
     @Column()
-    nombre: string;
+    dia: string;
 
-    @ApiProperty({example: 235959})
+    @ApiProperty({example: '23:59:59'})
     @Column()
-    hora: number;
+    hora: string;
 
     @ApiProperty({ example: 99.999})
     @Column()
-    valor?: number;
+    valor: number;
 
     @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)     
     sensor : Sensor;

@@ -1,19 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity'
 
-export class CreateMedidaDto {
+export class CreateMedidaDto 
+{
   @ApiProperty({ example: '235959'})
   readonly id: number;
 
-  @ApiProperty({example: 'Electrovávula_C02'})
-  readonly nombre: string;
+  @ApiProperty({example: '01/01/2001'})
+  dia: string;
 
-  @ApiProperty({example: 235959})
-  readonly hora: number;
+  @ApiProperty({example: '23:59:59'})
+  readonly hora: string;
 
   @ApiProperty({ example: 99.999})
   readonly valor?: number;
 
-  @ApiProperty({ example: { id: 1 }, type: String }) 
+  @ApiProperty({ example: { id: 1 }, type: Sensor }) 
   readonly sensor: Sensor; 
 }

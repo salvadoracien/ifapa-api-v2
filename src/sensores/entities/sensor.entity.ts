@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Reactor } from 'src/reactores/entities/reactor.entity';
 import { Medida } from 'src/medidas/entities/medida.entity'; 
@@ -9,7 +9,7 @@ export class Sensor {
   //Aqui falta gestionar como identificamos a cada sensor u_90x_xxxxxx ?¿
   //Cambiar decorador al que permite definir mi clave
   @ApiProperty()
-  @PrimaryGeneratedColumn() 
+  @PrimaryColumn() 
   id: number;
 
   @ApiProperty({ example: 'SCO2-Raceway_1' }) 

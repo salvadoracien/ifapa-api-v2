@@ -10,7 +10,7 @@ export class Reactor {
 
     @ApiProperty({ example: 'Raceway_1'})
     @Column()
-    nombre?: string;
+    nombre: string;
     
     @ApiProperty({example : 'Sensor_CO2'})
     @OneToMany( () => Sensor, (sensor : Sensor) => sensor.reactor )

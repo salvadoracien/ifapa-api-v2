@@ -1,0 +1,7 @@
+31/08/2022
+* Hacemos reunion y definimos filtros y demás cosas y procedemos a usar el modulo de typeorm de csvtojson
+- Reactor con lista de todos los sensores que tiene sin valores
+- Medidas meteorologicas globales tomadas por estacion meteorologica que nosotros tomamos como reactor.
+
+1/09/2022
+* Decidimos empezar a modelar la estrucutra de los reactores de Jose que están mejor estructurados

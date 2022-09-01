@@ -13,12 +13,12 @@ import { AuthGuard } from '@nestjs/passport';
 export class ReactoresController {
   constructor(private readonly reactoresService: ReactoresService) {}
 
-  @Post()
-  create(@Body() createReactoreDto: CreateReactorDto) {
-    return this.reactoresService.create(createReactoreDto);
+  @Post(':csv_path')
+  create(@Body() createReactorDto: CreateReactorDto) {
+    return this.reactoresService.create(createReactorDto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.reactoresService.findAll();
   }
@@ -29,8 +29,8 @@ export class ReactoresController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReactoreDto: UpdateReactorDto) {
-    return this.reactoresService.update(+id, updateReactoreDto);
+  update(@Param('id') id: string, @Body() updateReactorDto: UpdateReactorDto) {
+    return this.reactoresService.update(+id, updateReactorDto);
   }
 
   @Delete(':id')

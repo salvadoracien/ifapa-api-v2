@@ -1,0 +1,39 @@
+u_901 --> Variables globales: (CaudalCO2, CO2exterior, DirViento, Pluviometro, RadIntGlobal, RadPar, TempExterior, VelViento)
+
+
+u_902 --> Variables del Raceway4: 
+(BCosechaRW4,	ContaRW4,	EvCO2RW4,	EvMedioRW4,	NivelRW4,	Variador,	VariadorRW4)
+
+
+u_903 --> Variables ThinLayer1 y ThinLayer2: 
+(BCosechaTL1,	BCosechaTL2,	ContaTL1,	ContaTL2,	EvAireTL1, EvAireTL2,EvCO2TL1,	EvCO2TL2,	EvMedioTL1,	EvMedioTL2, NivelMaxTL20,NivelMinTL10,	
+NivelMinTL20,	NivelTL10,	NivelTL11,	NivelTL20,	NivelTL21,	NiveMaxlTL10,	TempAmbInt,	VariadorTL1,	VariadorTL2) BUENOS
+(EvAbrirCosTL1,	EvAbrirCosTL2,	EvCerrarCosTL1, EvCerrarCosTL2) MALOS
+
+
+u_904 --> Variables RaceWay1,2,3:
+(BCosechaRW1,	BCosechaRW2,	BCosechaRW3,	CO2RW1,	ContaRW1,	ContaRW2,	ContaRW3,	EvAireRW1,	EvAireRW2,	EvAireRW3,	EvCO2RW1,	EvCO2RW2,	
+EvCO2RW3,	EvMedioRW1,	EvMedioRW2,	EvMedioRW3,	NivelRW1,	NivelRW2,   NivelRW3, VariadorRW1,	  VariadorRW2,    VariadorRW3) BUENOS   
+(CaudalRW1, CaudalRW2, CaudalRW3,  EvAbrirCosRW1,     EvAbrirCosRW2, 	EvAbrirCosRW3, EvCerrarCosRW1,	EvCerrarCosRW2,	EvCerrarCosRW3, pruebaCaudalimetro) MALOS
+
+
+u_905 --> Variables de Tubulares1,2,3: 
+(ContaT1,	ContaT2,	ContaT3,	EvCO2T1,	EvCO2T2,	EvCO2T3,	EvCosechaT1,	EvCosechaT2,	EvCosechaT3,EvMedioT1,	EvMedioT2,	
+EvMedioT3,	NivMaxT1,	NivMaxT2,	NivMaxT3,	NivMinT1,	NivMinT2,	NivMinT3,	VariadorT1	VariadorT2,	VariadorT3, TintSemillero)
+
+
+u_906 --> Valores de Columnas1,2,3:
+(BombaAguaO3,	EvCO2C1,    EvCO2C2,	EvCO2C3,	NivelMaxAguaO3,     NivelMinAguaO3,	    
+NivelMinBombaAguaO3,	Ozonizador_EVaire,      pHC1,	pHC2,	pHC3,	TempC1,	    TempC2,	    TempC3)
+
+Variables para raceways: ¿No se mide el PH? 
+* BCosechaRWn
+* Caudal
+* ContaRWn
+* EvCO2RWn
+* EvCosRWn
+* EvMedioRWn
+* NivelRWn
+* VariadorRWn
+* EvAireRw1,2,3
+* EvAbrirCosRW1

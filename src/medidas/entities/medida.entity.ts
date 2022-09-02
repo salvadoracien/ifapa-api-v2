@@ -23,4 +23,5 @@ export class Medida {
     @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)     
     sensor : Sensor;
     //Aqui ver como metemos el sensor que toma la medida
+    //Tambien como 
 }

@@ -4,7 +4,7 @@ import { Reactor } from 'src/reactores/entities/reactor.entity';
 
 export class CreateSensorDto {
   @ApiProperty({ example: 'SCO2-Raceway_1' })
-  readonly nombre: string;
+  readonly nombreSensor: string;
 
    @ApiProperty({ example: 'Sensor de CO2 situado en el reactor...' })
    readonly description: string;

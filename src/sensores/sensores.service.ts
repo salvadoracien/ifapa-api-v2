@@ -17,9 +17,9 @@ export class SensoresService {
     return await this.sensoresRepository.find({ relations: ['reactor', 'medidas'] });
   }
 
- async findOne(id: number): Promise<Sensor> {
+ async findOne(idSensor: number): Promise<Sensor> {
     return await this.sensoresRepository.findOne({ 
-      where: { id },
+      where: { idSensor },
       relations: ['reactor', 'medidas']
     }); 
   }
@@ -28,12 +28,12 @@ export class SensoresService {
     return this.sensoresRepository.save(newSensor);
   }
 
-  async delete(id: number): Promise<Sensor> {
-    return await this.sensoresRepository.remove[id];
+  async delete(idSensor: number): Promise<Sensor> {
+    return await this.sensoresRepository.remove[idSensor];
   }
 
-  async update(id: number, newSensor: UpdateSensorDto): Promise<Sensor> { 
-    let toUpdate = await this.sensoresRepository.findOne({ where: { id } }); 
+  async update(idSensor: number, newSensor: UpdateSensorDto): Promise<Sensor> { 
+    let toUpdate = await this.sensoresRepository.findOne({ where: { idSensor } }); 
     let updated = Object.assign(toUpdate, newSensor); 
     return this.sensoresRepository.save(updated); 
   }

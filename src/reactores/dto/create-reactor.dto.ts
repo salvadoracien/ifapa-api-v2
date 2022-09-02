@@ -3,10 +3,10 @@ import { Sensor } from 'src/sensores/sensor.class';
 
 export class CreateReactorDto {
     @ApiProperty({ example: 1 })
-    id: number;
+    idReactor: number;
 
     @ApiProperty({ example: 'Raceway_1'})
-    nombre?: string;
+    nombreReactor?: string;
     
     @ApiProperty({example : 'Sensor_CO2'})
     sensores: Sensor[];

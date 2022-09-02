@@ -23,18 +23,18 @@ export class ReactoresController {
     return this.reactoresService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reactoresService.findOne(+id);
+  @Get(':idReactor')
+  findOne(@Param('idReactor') idReactor: string) {
+    return this.reactoresService.findOne(+idReactor);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReactorDto: UpdateReactorDto) {
-    return this.reactoresService.update(+id, updateReactorDto);
+  @Patch(':idReactor')
+  update(@Param('idReactor') idReactor: string, @Body() updateReactorDto: UpdateReactorDto) {
+    return this.reactoresService.update(+idReactor, updateReactorDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.reactoresService.remove(+id);
+  @Delete(':idReactor')
+  remove(@Param('idReactor') idReactor: string) {
+    return this.reactoresService.remove(+idReactor);
   }
 }

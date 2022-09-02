@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Unique, JoinColumn} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity';
 
@@ -20,7 +20,7 @@ export class Medida {
     @Column()
     valor: number;
 
-    @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)     
+    @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)
     sensor : Sensor;
     //Aqui ver como metemos el sensor que toma la medida
     //Tambien como 

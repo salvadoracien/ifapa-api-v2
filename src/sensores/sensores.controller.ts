@@ -32,21 +32,21 @@ export class SensoresController {
     return this.sensoresService.findAll(''); 
   }
 
-  @Get(':id') 
-  async findOne(@Param('id') id: number) { 
-    return this.sensoresService.findOne(+id); 
+  @Get(':idSensor') 
+  async findOne(@Param('idSensor') idSensor: number) { 
+    return this.sensoresService.findOne(+idSensor); 
   }
 
-  @Delete(':id')
-  async delete(@Param('id') id: number) {
-    return this.sensoresService.delete(+id);
+  @Delete(':idSensor')
+  async delete(@Param('idSensor') idSensor: number) {
+    return this.sensoresService.delete(+idSensor);
   }
 
-  @Patch(':id')
+  @Patch(':idSensor')
   async update(
-    @Param('id') id: number,
+    @Param('idSensor') idSensor: number,
     @Body() newSensor: UpdateSensorDto, 
   ) {
-    return this.sensoresService.update(+id, newSensor);
+    return this.sensoresService.update(+idSensor, newSensor);
   }
 }

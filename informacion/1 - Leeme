@@ -5,3 +5,7 @@
 
 1/09/2022
 * Decidimos empezar a modelar la estrucutra de los reactores de Jose que están mejor estructurados
+
+7/09/2022
+ * Metemos winston y continuamos tratando de parsear y tomar datos de csv
+ * Todo el winston de sensores listo solo falta reactores y medidas

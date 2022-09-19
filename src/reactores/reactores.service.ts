@@ -16,7 +16,7 @@ export class ReactoresService {
     return this.reactoresRepository.save(createReactorDto);
   }
 
-  async findAll(): Promise<Reactor[]> {
+  async findAll(params): Promise<Reactor[]> {
     return this.reactoresRepository.find({ relations: ['sensores'] });
   }
 
@@ -27,13 +27,14 @@ export class ReactoresService {
     });
   }
 
+  async delete(idReactor: number): Promise<any> {
+    return this.reactoresRepository.delete({idReactor});
+  }
+
   async update(idReactor: number, updateReactorDto: UpdateReactorDto): Promise<Reactor>{
     let toUpdate = await this.reactoresRepository.findOne({where: {idReactor}});
     let updated = Object.assign(toUpdate, updateReactorDto);
     return this.reactoresRepository.save(updated);
   }
 
-  async remove(idReactor: number): Promise<any> {
-    return this.reactoresRepository.delete({idReactor});
-  }
 }

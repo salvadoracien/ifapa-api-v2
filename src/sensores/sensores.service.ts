@@ -7,27 +7,26 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class SensoresService {
-
   constructor(
     @InjectRepository(Sensor) 
     private sensoresRepository: Repository<Sensor>, 
   ) {}
 
+  async create(newSensor: CreateSensorDto): Promise<Sensor> {
+    return this.sensoresRepository.save(newSensor);
+  }
+  
   async findAll(params): Promise<Sensor[]> {
     return await this.sensoresRepository.find({ relations: ['reactor', 'medidas'] });
   }
 
- async findOne(idSensor: number): Promise<Sensor> {
+  async findOne(idSensor: number): Promise<Sensor> {
     return await this.sensoresRepository.findOne({ 
       where: { idSensor },
       relations: ['reactor', 'medidas']
     }); 
   }
-
-  create(newSensor: CreateSensorDto): Promise<Sensor> {
-    return this.sensoresRepository.save(newSensor);
-  }
-
+  
   async delete(idSensor: number): Promise<Sensor> {
     return await this.sensoresRepository.remove[idSensor];
   }

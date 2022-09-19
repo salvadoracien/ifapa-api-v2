@@ -12,11 +12,11 @@ export class MedidasService {
     private medidasRepository: Repository<Medida>,
   ) {}
     
-  create(createMedidaDto: CreateMedidaDto): Promise<Medida> {
+  async create(createMedidaDto: CreateMedidaDto): Promise<Medida> {
     return this.medidasRepository.save(createMedidaDto);
   }
    
-  async findAll(): Promise<Medida[]> {
+  async findAll(params): Promise<Medida[]> {
     return this.medidasRepository.find();
   }
     

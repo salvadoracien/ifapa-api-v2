@@ -71,7 +71,7 @@ export class SensoresController {
   }
   
   @Get()
-  @ApiOperation({ summary: 'Obtener lista de sensores' })
+  @ApiOperation({ summary: 'Obtener una lista de todos los sensores' })
   @ApiResponse({
     status: HttpStatus.OK, 
     description: 'Lista de Sensores',
@@ -153,12 +153,12 @@ export class SensoresController {
   async update(
     @Req() request: Request,
     @Param('idSensor') idSensor: number,
-    @Body() newBook: UpdateSensorDto,
+    @Body() newSensor: UpdateSensorDto,
     @Res() res,
   ): Promise<Sensor> {
     let message = 'OK';
     let startTime = Date.now();
-    let data = await this.sensoresService.update(idSensor, newBook);
+    let data = await this.sensoresService.update(idSensor, newSensor);
     if (!data) {
       message = 'No se ha encontrado ningun sensor con el id proporcionado';
     }

@@ -7,13 +7,15 @@ import {
   Param,
   Delete,
   UseGuards,
+  Inject
 } from '@nestjs/common';
 import { MedidasService } from './medidas.service';
 import { CreateMedidaDto } from './dto/create-medida.dto';
 import { UpdateMedidaDto } from './dto/update-medida.dto';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-
+import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
+import { Logger } from 'winston';
 
 @Controller('medidas')
 @ApiTags('medidas')
@@ -21,7 +23,8 @@ import { AuthGuard } from '@nestjs/passport';
 @ApiBearerAuth('access-token')
 
 export class MedidasController {
-  constructor(private readonly medidasService: MedidasService) {}
+  constructor(private readonly medidasService: MedidasService, 
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger) {}
 
   @Post()
   create(@Body() createMedidaDto: CreateMedidaDto) {

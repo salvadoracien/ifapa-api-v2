@@ -9,8 +9,8 @@ import { Repository } from 'typeorm';
 export class SensoresService {
 
   constructor(
-      @InjectRepository(Sensor) 
-      private sensoresRepository: Repository<Sensor>, 
+    @InjectRepository(Sensor) 
+    private sensoresRepository: Repository<Sensor>, 
   ) {}
 
   async findAll(params): Promise<Sensor[]> {

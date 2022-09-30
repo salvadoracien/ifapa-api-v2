@@ -7,8 +7,8 @@ async function bootstrap() {
   // Configurar títulos de documnentación
   const options = new DocumentBuilder() 
     .setTitle('IFAPA REST API 2022')
-    .setDescription('Proyecto de TFG sobre una API Rest para el IFAPA. Versión 0.1 - 24/08/22')
-    .setVersion('0.1')
+    .setDescription('Proyecto de TFG sobre una API Rest para el IFAPA. Versión 0.2 - 19/09/22')
+    .setVersion('0.2')
     .addBearerAuth( 
       { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' },
       'access-token', 

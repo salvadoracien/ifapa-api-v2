@@ -12,14 +12,17 @@ export class ReactoresService {
     private reactoresRepository: Repository<Reactor>,
   ) {}
 
-  async create(createReactorDto: CreateReactorDto): Promise<Reactor>{
-    return this.reactoresRepository.save(createReactorDto);
+  //Muestra todos los reactores únicamente
+  async findAll(){
+    return this.reactoresRepository.find();
   }
 
-  async findAll(params): Promise<Reactor[]> {
+  //Muestra los reactores junto a sus sensores
+  async findAllS(): Promise<Reactor[]> {
     return this.reactoresRepository.find({ relations: ['sensores'] });
   }
 
+  //Muestra los sensores de un reactor
   async findOne(idReactor: number):Promise<Reactor> {
     return this.reactoresRepository.findOne({
       where: {idReactor},
@@ -27,10 +30,13 @@ export class ReactoresService {
     });
   }
 
+  //CRUD 
+  async create(createReactorDto: CreateReactorDto): Promise<Reactor>{
+    return this.reactoresRepository.save(createReactorDto);
+  }
   async delete(idReactor: number): Promise<any> {
     return this.reactoresRepository.delete({idReactor});
   }
-
   async update(idReactor: number, updateReactorDto: UpdateReactorDto): Promise<Reactor>{
     let toUpdate = await this.reactoresRepository.findOne({where: {idReactor}});
     let updated = Object.assign(toUpdate, updateReactorDto);

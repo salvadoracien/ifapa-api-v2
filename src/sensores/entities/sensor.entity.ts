@@ -15,10 +15,6 @@ export class Sensor {
   @Column([Unique, true])
   nombreSensor: string;
 
-  @ApiProperty({ example: 'Sensor para medir el CO2 del reactor...' }) 
-  @Column('text')
-  description?: string;
-
   @ApiProperty()
   @ManyToOne(() => Reactor, (reactor : Reactor) => reactor.sensores)
   reactor : Reactor;

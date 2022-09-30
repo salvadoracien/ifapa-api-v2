@@ -20,15 +20,19 @@ export class MedidasService {
     return this.medidasRepository.find();
   }
     
-  async findOne(id: number): Promise<Medida> {
-    return await this.medidasRepository.findOne({ where: { id }});
+  async findOne(medidaId: number): Promise<Medida> {
+    return await this.medidasRepository.findOne({ where: { medidaId }});
+  }
+
+  async findFecha(timestamp: Date): Promise<Medida> {
+    return await this.medidasRepository.findOne({ where: { timestamp }});
   }
     
-  async update(id: number, updateMedidaDto: UpdateMedidaDto) {
-    return this.medidasRepository.update(id, updateMedidaDto);
+  async update(medidaId: number, updateMedidaDto: UpdateMedidaDto) {
+    return this.medidasRepository.update(medidaId, updateMedidaDto);
   }
     
-  async delete(id: number): Promise<Medida> {
-    return this.medidasRepository.delete[id];
+  async delete(medidaId: number): Promise<Medida> {
+    return this.medidasRepository.delete[medidaId];
   }
 }

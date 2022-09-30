@@ -65,12 +65,33 @@ export class ReactoresController {
     description: 'Lista de reactores',
     type: [Reactor],
   })
-  async findAll(@Req() request: Request, @Res() res): Promise<Reactor[]> { 
+  async findAll(
+    @Req() request: Request, 
+    @Res() res): Promise<Reactor[]> { 
     let startTime = Date.now(); 
-    let data = await this.reactoresService.findAll(request.query); 
+    let data = await this.reactoresService.findAll(); 
     this.writeLog(startTime, request, HttpStatus.OK);
-    return res.status(HttpStatus.OK) 
-    .json({ 
+    return res.status(HttpStatus.OK).json({ 
+      statusCode: HttpStatus.OK,
+      message: 'OK',
+      data: data,
+    });
+  }
+
+  @Get("sensores")
+  @ApiOperation({ summary: 'Obtener una lista de todos los reactores junto a sus sensores instalados' })
+  @ApiResponse({
+    status: HttpStatus.OK, 
+    description: 'Lista de reactores y sus sensores',
+    type: [Reactor],
+  })
+  async findAllS(
+    @Req() request: Request, 
+    @Res() res): Promise<Reactor[]> { 
+    let startTime = Date.now(); 
+    let data = await this.reactoresService.findAllS(); 
+    this.writeLog(startTime, request, HttpStatus.OK);
+    return res.status(HttpStatus.OK).json({ 
       statusCode: HttpStatus.OK,
       message: 'OK',
       data: data,

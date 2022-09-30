@@ -2,24 +2,28 @@ import {extname, join} from 'path';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class csvLogic {
+export class csvModule {
+    //Para confirmar que nos pasan .csv
     csvFileFilter = (req, file, callback) => {
         if (!file.originalname.match(/\.(csv)$/)) {
-            return callback(new Error('Only CSV files are allowed!'), false);
+            return callback(new Error('Solo se permiten archivos ".csv"'), false);
         }
     callback(null, true);
     };
 
+    //Obtener el nombre del archivo
     csvFileName = (req, file, callback) => {
         const fileExtName = extname(file.originalname);
         callback(null, `data${fileExtName}`);
     };
 
+    //Obtener la ruta del archivo 
     getCSVFile = () => {
         const filePath = join(__dirname, "..", "..", "uploads/csv", "data.csv");
         return filePath;
     };
 
+    //(?)
     editFileName = (req, file, callback) => {
         const name = file.originalname.split('.')[0];
         const fileExtName = extname(file.originalname);

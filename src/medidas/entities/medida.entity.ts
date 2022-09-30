@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Unique, JoinColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Unique, JoinColumn, Index} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity';
 
@@ -6,22 +6,22 @@ import { Sensor } from 'src/sensores/entities/sensor.entity';
 export class Medida {
     @PrimaryGeneratedColumn()
     @ApiProperty({ example: '001'})
-    id: number;
+    medidaId: number;
 
-    @ApiProperty({example: '01/01/2001'})
-    @Column()
-    dia: string;
+    @ApiProperty({example: '01/01/2001-00:00:00'})
+    @Index("IDX_timestamp", { synchronize : false })
+    @Column({unique:true})
+    timestamp: Date;
 
-    @ApiProperty({example: '23:59:59'})
+    @ApiProperty({ example : 'Temperatura (Cº)'})
     @Column()
-    hora: string;
+    tipoDato: string;
 
     @ApiProperty({ example: 99.999})
     @Column()
-    valor: number;
+    valor: string;
 
+    //Populate, tutorial relaciones
     @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)
     sensor : Sensor;
-    //Aqui ver como metemos el sensor que toma la medida
-    //Tambien como 
 }

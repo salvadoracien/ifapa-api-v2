@@ -22,6 +22,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 import { Request } from 'express';
+import { Between } from 'typeorm';
 
 @Controller('medidas')
 @ApiTags('medidas')
@@ -118,11 +119,38 @@ export class MedidasController {
     });
   }
 
+  @Get('DD-MM-AAAA')
+  @ApiOperation({ summary: 'Devuelve la medida para un dia en concreto' })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'Datos de la medida (?)',
+    type: Medida,
+  })
+  async findFecha(
+    @Req() request: Request,
+    @Param('dia') dia: Date,
+    @Res() res,
+  ): Promise<Medida> {
+    let message = 'OK';
+    let startTime = Date.now();
+    let data = await this.medidasService.findFecha(dia);
+    if (!data) {
+      message = 'No se ha encontrado ninguna medida para la fecha proporcionada';
+    }
+    this.writeLog(startTime, request, HttpStatus.OK);
+    return res.status(HttpStatus.OK).json({
+      statusCode: HttpStatus.OK,
+      message: message,
+      data: data,
+    });
+  }
+
+  //Tampoco tiene mucho sentido este endpoint creo 
   @Patch(':id')
-  @ApiOperation({ summary: 'Actualizar un sensor específico' })
+  @ApiOperation({ summary: 'Actualizar una medida específica' })
   @ApiResponse({
     status: 200,
-    description: 'Datos del sensor actualizado',
+    description: 'Datos de la medida actualizada',
     type: Medida,
   })
   async update(

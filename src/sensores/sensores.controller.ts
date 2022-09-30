@@ -20,6 +20,7 @@ import { ApiBearerAuth, ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagg
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
 import { Sensor } from './entities/sensor.entity';
+import { Reactor } from 'src/reactores/reactor.class';
 import { Request } from 'express';
 
 @Controller('sensores')

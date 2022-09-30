@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany, Unique } from 'typeorm';
+import { Entity, Column, PrimaryColumn, ManyToOne, OneToMany, Unique, JoinColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Reactor } from 'src/reactores/entities/reactor.entity';
 import { Medida } from 'src/medidas/entities/medida.entity'; 
@@ -15,11 +15,11 @@ export class Sensor {
   @Column([Unique, true])
   nombreSensor: string;
 
-  @ApiProperty()
+  @ApiProperty({type:()=> Reactor})
   @ManyToOne(() => Reactor, (reactor : Reactor) => reactor.sensores)
   reactor : Reactor;
 
-  @ApiProperty()
+  @ApiProperty({type:()=> Medida})
   @OneToMany(() => Medida, (medidas: Medida) => medidas.sensor)
   medidas : Medida[];
 }

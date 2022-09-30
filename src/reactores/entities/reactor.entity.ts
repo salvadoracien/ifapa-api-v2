@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, OneToMany, Unique } from 'typeorm';
+import { Entity, Column, PrimaryColumn, OneToMany, Unique, JoinColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity';
 
@@ -12,7 +12,7 @@ export class Reactor {
     @Column()
     nombreReactor: string;
     
-    @ApiProperty({example : 'Sensor_CO2'})
+    @ApiProperty({example : 'Sensor_CO2', type:()=> Sensor})
     @OneToMany( () => Sensor, (sensor : Sensor) => sensor.reactor )
     sensores: Sensor[];
     //Gestionar aqui como le metemos los sensores que lleva cada reactor

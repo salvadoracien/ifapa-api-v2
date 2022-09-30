@@ -119,7 +119,7 @@ export class MedidasController {
     });
   }
 
-  @Get('DD-MM-AAAA')
+  @Get('timestamp')
   @ApiOperation({ summary: 'Devuelve la medida para un dia en concreto' })
   @ApiResponse({
     status: HttpStatus.OK,

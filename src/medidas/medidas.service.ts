@@ -28,7 +28,7 @@ export class MedidasService {
     return await this.medidasRepository.findOne({ where: { timestamp }});
   }
     
-  async update(medidaId: number, updateMedidaDto: UpdateMedidaDto) {
+  async update(medidaId: number,  updateMedidaDto : UpdateMedidaDto) {
     return this.medidasRepository.update(medidaId, updateMedidaDto);
   }
     

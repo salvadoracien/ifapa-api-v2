@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Unique, JoinColumn, Index} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, Index, JoinColumn} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Sensor } from 'src/sensores/entities/sensor.entity';
 
@@ -13,7 +13,7 @@ export class Medida {
     @Column({unique:true})
     timestamp: Date;
 
-    @ApiProperty({ example : 'Temperatura (Cº)'})
+    @ApiProperty({ example : 'Temperatura (ºC)'})
     @Column()
     tipoDato: string;
 
@@ -21,7 +21,7 @@ export class Medida {
     @Column()
     valor: string;
 
-    //Populate, tutorial relaciones
+    @ApiProperty({type :()=> Sensor})
     @ManyToOne(() => Sensor, (sensor: Sensor) => sensor.medidas)
     sensor : Sensor;
 }

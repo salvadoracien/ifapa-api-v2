@@ -10,7 +10,7 @@ export class Medida {
 
     @ApiProperty({example: '01/01/2001-00:00:00'})
     @Index("IDX_timestamp", { synchronize : false })
-    @Column({unique:true})
+    @Column({unique:true, type:'timestamp with time zone'})
     timestamp: Date;
 
     @ApiProperty({ example : 'Temperatura (ºC)'})

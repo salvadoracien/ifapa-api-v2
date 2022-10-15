@@ -34,8 +34,8 @@ export class MedidasController {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger) {}
 
     writeLog(startTime: any, request: any, statusCode: number) {
-      let finishTime = Date.now();
-      let elapsedTime = finishTime - startTime;
+      const finishTime = Date.now();
+      const elapsedTime = finishTime - startTime;
     
       this.logger.log({
         level: 'info',
@@ -62,8 +62,8 @@ export class MedidasController {
     @Body() newMedida: CreateMedidaDto,
     @Res() res,
   ): Promise<Medida> {
-    let startTime = Date.now();
-    let data = await this.medidasService.create(newMedida);
+    const startTime = Date.now();
+    const data = await this.medidasService.create(newMedida);
 
     this.writeLog(startTime, request, HttpStatus.CREATED);
     return res.status(HttpStatus.CREATED).json({
@@ -81,8 +81,8 @@ export class MedidasController {
     type: [Medida],
   })
   async findAll(@Req() request: Request, @Res() res): Promise<Request[]> { 
-    let startTime = Date.now(); 
-    let data = await this.medidasService.findAll(request.query); 
+    const startTime = Date.now(); 
+    const data = await this.medidasService.findAll(request.query); 
     this.writeLog(startTime, request, HttpStatus.OK);
     return res.status(HttpStatus.OK) 
     .json({ 
@@ -106,8 +106,8 @@ export class MedidasController {
     @Res() res,
   ): Promise<Medida> {
     let message = 'OK';
-    let startTime = Date.now();
-    let data = await this.medidasService.findOne(idMedida);
+    const startTime = Date.now();
+    const data = await this.medidasService.findOne(idMedida);
     if (!data) {
       message = 'No se ha encontrado ninguna medida para el id proporcionado';
     }
@@ -123,7 +123,7 @@ export class MedidasController {
   @ApiOperation({ summary: 'Devuelve la medida para un dia en concreto' })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Datos de la medida (?)',
+    description: 'Datos de la medida',
     type: Medida,
   })
   async findFecha(
@@ -132,8 +132,8 @@ export class MedidasController {
     @Res() res,
   ): Promise<Medida> {
     let message = 'OK';
-    let startTime = Date.now();
-    let data = await this.medidasService.findFecha(dia);
+    const startTime = Date.now();
+    const data = await this.medidasService.findFecha(dia);
     if (!data) {
       message = 'No se ha encontrado ninguna medida para la fecha proporcionada';
     }
@@ -160,8 +160,8 @@ export class MedidasController {
     @Res() res,
   ): Promise<Medida> {
     let message = 'OK';
-    let startTime = Date.now();
-    let data = await this.medidasService.update(idMedida, newMedida);
+    const startTime = Date.now();
+    const data = await this.medidasService.update(idMedida, newMedida);
     if (!data) {
       message = 'No se ha encontrado ninguna medida para el id proporcionado';
     }
@@ -187,12 +187,12 @@ export class MedidasController {
     @Res() res,
   ): Promise<Medida> {
     let message = 'OK';
-    let startTime = Date.now();
-    let data = await this.medidasService.delete(idMedida);
+    const startTime = Date.now();
+    const data = await this.medidasService.delete(idMedida);
 
     if (data['affected'] == 0) {
       message = 'No se ha encontrado ninguna medida para el id proporcionado';
-      data = data;
+      //data = data;
     }
 
     this.writeLog(startTime, request, HttpStatus.OK);
